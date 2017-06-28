@@ -1,0 +1,94 @@
+body{
+				background-image:url("page-bg.jpg");
+				background-repeat:no-repeat;
+				background-attachment:fixed;
+			}
+			#login-box{
+				width:50%;
+				height:45%;
+				color:#999999;
+				margin-left:35%;
+				margin-top:10%;
+				border-radius:5px;
+				background: -moz-linear-gradient(right, black, gray);
+  				background: linear-gradient(to right, black , gray);
+			}
+			#login-heading{
+				font-size:60px;
+				font-family:arial;
+				font-weight:bold;
+			}
+			#login-heading-box{
+				width:100%;
+				height:20%;
+				text-align:center;
+					
+			}
+				
+			#form-box{
+				width:100%;
+				height:80%;
+				position:bottom;
+				
+			}
+			#form{
+				margin-left:200px;
+				margin-top:20px;
+			}
+			#label{
+				color:#b3b3b3;
+				font-size:30px;
+				font-weight:bold;
+			}
+			th{
+				text-align:left;
+				padding:15px;
+					
+			}
+			#textbox{
+				width:300px;
+				height:30px;
+				border-radius:6px;
+				background-color:#b3b3b3;
+				padding:10px;
+				color: #ffffff;
+				font-size:20px;
+				
+			}
+			#button{
+				width:100px;
+				height:30px;
+				border-radius:6px;
+				font-size:15px;
+				font-weight:bold;
+				background-color:#b3b3b3;
+			}
+			::-webkit-input-placeholder { 
+  				color: #ffffff;
+				font-size:20px;
+				
+			}
+			::-moz-placeholder { 
+  				color: #ffffff;
+			}
+			#log{
+				color:white;
+			}
+			#texti{
+				color:#b3b3b3;
+				font-size:16px;
+				font-weight:bold;
+			}
+			#forgotlink{
+				text-decoration:none;
+			}
+			#reghere{
+				width:50%;
+				margin-left:52%;
+				
+			}
+			#texti{
+				color:#b3b3b3;
+				font-size:16px;
+				font-weight:bold;
+			}
