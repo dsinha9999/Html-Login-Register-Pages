@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="icon" href="images.jpg"/>
+		<link rel="stylesheet" type="text/css" href="login-css.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+		<script src="jquery.form.js"></script>
+		<script>
+			
+			
+			
+			
+			
+			function validate(){
+				var email=document.getElementById("email").value;
+				var password=document.getElementById("password").value;
+				var atpos = email.indexOf("@");
+   				var dotpos = email.lastIndexOf(".");
+				var passwd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,16}$/;
+				if (email==""){
+					$("#email").focus();
+        			$("#error-message").html("Enter Can't be Blank.");
+					return false;
+				}
+    			else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+					$("#email").focus();
+        			$("#error-message").html("Not a valid e-mail address");
+					
+        			return false;
+    			}
+				
+				else if(email.length <8 || email.length >30)
+				{
+					$("#email").focus();
+					$("#error-message").html(" Email must contain more than 7 characters");
+					
+					return false;
+				}
+				else if(password=="")
+				{
+					$("#password").focus();
+					$("#error-message").html("Password Can't be Blank.");	
+					
+					return false;
+				}
+				else if(password.length<6 || password.length>16)
+				{
+					$("#password").focus();
+					$("#error-message").html("Password must be between 6 - 16 Characters.");
+					
+					return false;
+				}
+				else if(!password.match(passwd))
+				{
+					$("#password").focus();
+					$("#error-message").html("Must be alphanumeric 0-9,aA-zZ,[!@#$%...]");
+					
+					return false;	
+				}
+			}
+		</script>
+	</head>
+	<body onload='$("#form-box").fadeOut(1000).fadeIn(2000);$("#email").focus()'>
+		<div id="login-box">
+			<div id="login-heading-box">
+				<h2 id="login-heading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Login </h2>
+			</div>
+			<div id="form-box">
+				<div id="form">
+					<form action="#" method="post" id="login-form" name="login-form" onsubmit="return validate()">
+					<table>
+						<tr><th></th><th id="error-message" class="error-message"></th></tr>
+						<tr><th id="label" class="email" >Email</th><th><input class="textbox" id="email" type="text" name="email" size="30" maxlength="30" placeholder="Enter Email"/></th></tr>
+						<tr><th id="label" class="password">Password</th><th><input class="textbox" id="password" type="password" name="password" size="16" maxlength="16" placeholder="Enter Password"/></th></tr>
+						<tr><th>&nbsp;</th><th><input type="radio" name="rememberme" value="remember"/><span id="texti">Remember Me</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="forgotlink"><span id="texti">Forgot Paswword</span></a></th></tr>
+						<tr><th></th><th>&nbsp;&nbsp;&nbsp;&nbsp;<input id="button" type="submit" value="Login" name="submit-button" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="button" type="reset" value="Clear"/></th></tr>
+					</table>
+					</form>
+				</div>
+				<div id="reghere">
+					<a href="register.html" id="forgotlink"><span id="texti">Not Registered ? Register Here</span> </a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

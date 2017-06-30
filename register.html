@@ -1,0 +1,152 @@
+<html>
+	<head>
+		<title>Register</title>
+		<link rel="icon" href="images.jpg">
+		<link rel="stylesheet" type="text/css" href="register-css.css"> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+		<script src="jquery.form.js"></script>
+		<script>
+			function validate(){
+				var email=document.getElementById("email").value;
+				var password=document.getElementById("password").value;
+				var password1=document.getElementById("password1").value;
+				var name=document.getElementById("name").value;
+				var mobile=document.getElementById("mobile").value;
+				var date=document.getElementById("date").value;
+				var passwd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,16}$/;
+				var genderm=document.getElementById("male");
+				var genderf=document.getElementById("female");
+				var atpos = email.indexOf("@");
+   				var dotpos = email.lastIndexOf(".");
+				if(name=="")
+				{
+					$("#name").focus();
+        			$("#error-message").html("Name Can't be Blank.");
+        			return false;
+				}
+				else if(name.length<4)
+				{
+				 	$("#name").focus();
+					$("#error-message").html("Name must be of more than 4 Characters.");
+					return false;
+				}
+				else if(genderm.checked==false && genderf.checked==false)
+				{
+				 	$("#gender").css("background-color","#ff6666");
+					$("#error-message").html("Gender is not Selected.");
+					return false;
+				}
+				else if(date=="")
+				{
+					$("#date").focus();
+					$("#error-message").html("Date is not selected");
+				    return false;
+				}
+				else if (email==""){
+					$("#email").focus();
+        			$("#error-message").html("Email Can't be Blank.");
+        			return false;
+				}
+    			else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+					$("#email").focus();
+        			$("#error-message").html("Not a valid e-mail address");
+        			return false;
+    			}
+				
+				else if(email.length <8 || email.length >30)
+				{
+					$("#email").focus();
+					$("#error-message").html(" Email must contain more than 7 characters");
+					return false;
+				}
+				else if(mobile=="")
+				{
+				 	$("#mobile").focus();
+					$("#error-message").html("Mobile Number can't be blank.");
+					return false;
+				}
+				else if(isNaN(mobile))
+				{
+					$("#mobile").focus();
+					$("#error-message").html("Invalid Mobile Number");
+					return false;
+					
+				}
+				else if(mobile.length!=10)
+				{
+				 	$("#mobile").focus();
+					$("#error-message").html("Invalid Mobile Number.");
+					return false;
+				}
+				else if(password=="")
+				{
+					$("#password").focus();
+					$("#error-message").html("Password Can't be Blank.");	
+					return false;
+				}
+				else if(password.length<6 || password.length>16)
+				{
+					$("#password").focus();
+					$("#error-message").html("Password must be between 6 - 16 Characters.");
+					return false;
+				}
+				else if(!password.match(passwd))
+				{
+					$("#password").focus();
+					$("#error-message").html("Must be alphanumeric 0-9,aA-zZ,[!@#$%...]");
+					return false;	
+				}
+				else if(password1=="")
+				{
+					$("#password1").focus();
+					$("#error-message").html("Password Can't be Blank.");	
+					return false;
+				}
+				else if(password1.length<6 || password1.length>16)
+				{
+					$("#password1").focus();
+					$("#error-message").html("Password must be between 6 - 16 Characters.");
+					return false;
+				}
+				else if(password!=password1)
+				{
+					$("#password").focus();
+					$("#password1").focus();
+					$("#error-message").html("Password didn't match.");
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body onload='$("#form-box").fadeOut(1000).fadeIn(2000);$("#name").focus()'>
+		<div id="login-box">
+			<div id="login-heading-box">
+				<h2 id="login-heading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Register </h2>
+			</div>
+			<div id="form-box">
+				<div id="form">
+					<form action="#" name="registration-form" id="registration-form" method="post" onsubmit="return validate()" >
+					<table>
+						<tr><th></th><th id="error-message" class="error-message"></th></tr>
+						<tr><th id="label">Name</th><th><input class="textbox" id="name" type="text" name="name" size="30" maxlength="30" placeholder="Enter Name"/></th></tr>
+						<tr><th id="label">Gender</th><th><input type="radio" id="male" name="gender" value="male"/><span id="textbox1">Male</span> <input type="radio" id="female" name="gender" value="female"/><span id="textbox1">Female</span></th></tr>
+						<tr><th id="label">D.O.B.</th><th><input class="textbox" id="date" type="date" name="dob" max="2010-12-31" min="1950-01-01"/></th></tr>
+						<tr><th id="label">Email</th><th><input class="textbox" id="email" type="text" name="email" size="30" maxlength="30" placeholder="Enter Email"/></th></tr>
+						<tr><th id="label">Mobile</th><th><input class="textbox" id="mobile" type="tel" name="mobile" size="10" maxlength="10" placeholder="Enter Mobile No. ( 10 Digit )"/></th></tr>
+						<tr><th id="label">Password</th><th><input class="textbox" id="password" type="password" name="password" size="16" maxlength="16" placeholder="Enter Your Password"/></th></tr>
+						<tr><th id="label">Re-Enter Password</th><th><input class="textbox" id="password1" type="password" name="password1" size="16" maxlength="16" placeholder="Re-Enter Your Password"/></th></tr>
+						
+						<tr><th></th><th>&nbsp;&nbsp;&nbsp;&nbsp;<input id="button" type="submit" value="Register" name="submit-button"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="button" type="reset" value="Clear"/></th></tr>
+						
+					</table>
+						
+					</form>
+				</div>
+			</div>
+			<div id="reghere">
+					<a href="login.html" id="forgotlink"><span id="texti">Registered ? Login Here</span> </a>
+				</div>
+		</div>
+	</body>
+</html>
